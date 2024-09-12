@@ -1,0 +1,20 @@
+code {
+    background: #eaeaed;
+    color: #666;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    display: inline-block;
+    height: 90px;
+    line-height: 90px;
+    margin: 0 14px;
+    text-align: center;
+    width: 90px;
+  }
+  .border-rounded {
+    border-radius: 5px;
+  }
+  .border-circle {
+    border-radius: 50%;
+  }
+  .border-football {
+    border-radius: 15px 75px;
+  }

@@ -1,0 +1,137 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+  background: grey;
+}
+
+h1 {
+  font-size: 84px;
+  padding: 200px 150px 20px 150px; 
+  text-transform: uppercase;
+  color: white;
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+header {
+  width: 100%;
+  /* border: 1px solid blue; */
+}
+
+nav {
+  height: 100px;
+}
+
+nav  * {
+  float: left;
+  width: 10%;
+  display: block;
+  
+  background: white;
+  /* border: 1px solid red; */
+}
+
+nav > ul {
+  width: 80%;
+  /* background: yellowgreen; */
+  
+}
+
+li, nav > a {
+  padding: 10px;
+  /* background: orange; */
+}
+
+header > nav > a {
+  background: white;
+  height: 36px;
+}
+
+
+p {
+  color: white;
+  padding: 25px 150px;
+
+}
+
+section > section > section {
+  padding: 25px 150px;
+}
+
+section > section > section > p {
+  background: black;
+  width: 25%;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+section > section > section + section > section > p {
+  background: white;
+  color: black;
+}
+
+header + section + section {
+  background: white;
+}
+
+/* .title, .image {
+  float: left;
+  width: 50%;
+  border: 1px solid red;
+} */
+
+/*
+
+section {
+  float: left;
+  width: 50%;
+}
+
+.section2 {
+  border: 1px solid red;
+}
+
+body > header + section > section > section {
+  
+  background: black;
+  color: white;
+  border: 1px solid red;
+}
+
+header + section + section {
+  clear: both;
+  width: 100%;
+  height: 1000px;
+  background: white;
+  border: 1px solid red;
+} */
+
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

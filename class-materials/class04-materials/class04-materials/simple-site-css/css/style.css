@@ -1,0 +1,134 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Back ground color and border */
+body {
+    background: skyblue;
+    border: 5px solid green;
+    margin: 30px;
+}
+
+/* Page Heading, section heading, and Navigation bar */
+
+h1 {
+    color: white;
+    font-size: 48px;
+    font-style: italic;
+    text-align: center;
+    font-weight: bold;
+    font-family: serif;
+    padding: 50px;
+}
+
+nav {
+    color: grey;
+    font-size: 28px;
+    font-family: sans-serif;
+    font-weight: bold;
+    /* display: flex; */
+    /* padding: 0 50% 0 50%; */
+    text-align: center;
+
+
+    
+}
+
+h2{
+    color: white;
+    font-size: 36px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+h3 {
+    color: white;
+}
+
+section { 
+    /* border: 1px solid blue; */
+    Padding: 50px;
+   
+}
+
+img {
+    float: right;
+    padding: 25px;
+}
+
+/* Paragraph */
+p {
+    color: whitesmoke;
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 50px 0px 50px 0px;
+    
+}
+
+/* Make all hyperlinks green */
+a {
+    color: green;
+}
+
+nav > p {
+    color: white;
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    display: inline;
+}
+
+footer > nav {
+    color: grey;
+    text-align: center;
+    margin: 0px 0px 50px 0px;
+}
+
+  

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="icon-container">
+        <p id="menu-icon">&#x2630;</p>
+      </div>
+      <div class="buttons-container"></div>
+    </header>
+    <main>
+      <div id="meals-container"></div>
+      <form id="add-meal-form">
+        <h2>Add a new meal</h2>
+        <div class="input-container">
+          <label for="name">Name:</label>
+          <input type="text" name="name" placeholder="Enter meal name" required/>
+        </div>
+        <div class="input-container">
+          <label for="imageUrl">Image URL:</label>
+          <input type="text" name="imageUrl" placeholder="Enter imageUrl" required />
+        </div>
+        <div class="input-container">
+          <label for="category">Category</label>
+          <select id="form-select" name="category">
+            <option value="">Select a category</option>
+          </select>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <footer>
+      <button class="theme-btn">Dark Mode</button>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+h1 {
+  font-size: 60px;
+  font-family: serif;
+}
+
+h2 {
+  font-size: 60px;
+  font-family: serif;
+}
+
+
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+
+
+header {
+  height: 55px;
+  background: white;
+  color: black;
+}
+
+nav * {
+  float: left;
+  width: 10%;
+  display: block;
+ 
+}
+
+nav ul {
+  width: 50%;
+}
+
+nav form input{
+  width: 100%;
+}
+
+
+main {
+  
+  height: 600px;
+  background: grey;
+  /* background-image: url(https://st4.depositphotos.com/9012638/40083/i/450/depositphotos_400838660-stock-photo-autumn-cooking-background-organic-autumn.jpg) */
+}
+
+main > ul {
+  float: left;
+  width: 10%;
+  display: block;
+}
+
+
+main {
+  float: left;
+}
+
+main + section {
+  clear: both;
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

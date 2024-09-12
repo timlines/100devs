@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+
+header, footer {
+    height: 150px;
+    border: 3px solid rgb(59, 59, 59);
+    clear: both;
+    
+    /* extra */
+    background: gray;
+}
+
+section {
+    height: 600px;
+    border: 3px solid rgb(59, 59, 59);
+    float: left;
+    background: gray;
+}
+
+.alpha {
+    width: 20%;
+
+}
+
+.bravo {
+    
+    width: 40%;
+    
+}
+
+.charlie {
+    
+    width: 20%;
+    
+}
+
+.delta {
+    
+    width: 20%;
+    
+}
+
+
+
+
+/* element names */
+h1 {
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+
+}

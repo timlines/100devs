@@ -1,0 +1,151 @@
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+
+
+
+/******************************************
+/* MAIN
+/*******************************************/
+
+body {
+     background: hsl(180 3% 94%);
+}
+
+main > img {
+     border-radius: 100px;
+     margin: 65px 0 10px 0;
+}
+
+h1 {
+     font-size: 24px;
+     padding: 10px 0 20px 0;
+     font-weight: 600;
+}
+
+h2 {
+     font-size: 18px;
+     padding: 0 0 20px 0;
+}
+
+h3 {
+     font-family: 'Trebuchet MS';
+}
+
+p {
+     padding: 0 0 15px 0;
+}
+
+main {
+     background: rgba(69, 88, 169, 1);
+     font-family: 'Trebuchet MS';
+     color: white;
+     text-align: center;
+     height: 1000px;
+}
+
+main li {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+}
+
+main > ul > li > a {
+     background: white; 
+     font-size: 20px;
+     border-radius: 40px;
+     padding: 20px;
+     
+     text-align: center;
+     color: rgba(69, 88, 169, 1);
+     text-decoration: none;
+     flex-direction: row;
+     justify-content: center;
+     
+     
+     display: flex;
+     align-items: center;
+     margin: 7.5px 0;
+     width: 581px;
+}
+
+main a > span {
+     opacity: 0;
+ }
+
+.thumbnail {
+     width: 60px;
+     border-radius: 30px;
+}
+
+/******************************************
+/* FOOTER STYLES
+/*******************************************/
+
+footer {
+     
+     height: 500px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     
+}
+
+h4 {
+     color: black;
+     font-size: 24px;
+     padding: 50px;
+}
+
+.category {
+     color: black;
+     font-size: 20px;
+     text-decoration: underline;  
+}
+
+footer > nav > ul > li {
+     color: black;
+     font-size: 20px;
+     padding: 5px;
+ 
+}
+
+a:link {
+     text-decoration: none;
+     color: black;
+}
+
+a:visited {
+     text-decoration: none;
+     color: black;
+}
+
+a:hover {
+     text-decoration: underline;
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
