@@ -1,0 +1,24 @@
+// [1,2,2,3,4]
+
+function twoSum(arr, sum){
+    //pairs arr
+    const pairs = []
+    //hash map
+    const seenNums = {}
+
+    //loop
+    for(const currentNum of arr){
+        const diff = sum - currentNum
+        if(seenNums[diff]){
+            //match
+            pairs.push([currentNum, diff])
+        }else{
+            seenNums[currentNum] = true //may change to count
+        }
+    }
+
+    return pairs;
+
+}
+
+console.log( twoSum([1,2,2,3,4], 4), '[[2,2],[1,3]]' )
