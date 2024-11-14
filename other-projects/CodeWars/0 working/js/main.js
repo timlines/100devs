@@ -20,7 +20,7 @@ var summation = function (num) {
 
   }
 
-
+//test
 // Example 
 //summation(2) -> 3  // ( 1 + 2 = 3)
 
