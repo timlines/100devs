@@ -1,13 +1,20 @@
-const memo = {}
+function squareSum(numbers){
 
-function fib(n){
-    if ( n < 2 ){
-        return n;
-    }else if ( memo[n] ){
-        return memo[n];
-    }else {
-        let result = fib( n - 1 ) + ( n - 2 );
-        memo[n] = result;
-        return result;
+    
+    let result = 0;
+    
+    for (let i = 0; i < numbers.length; i++){
+        
+        number = numbers[i];
+        
+        number **= 2;
+      
+        result = number + result;
+        
     }
+
+    return result;
 }
+
+console.log(squareSum([ 2, 1, 2, ])); // Should return 9 because 1^2 + 2^2 + 2^2 = 9
+
