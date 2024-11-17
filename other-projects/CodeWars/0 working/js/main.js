@@ -1,6 +1,6 @@
-function squareSum(numbers){
-    return numbers.reduce((sum, num) => sum + (num * num), 0);           
+function sumSecondLowAndHigh (arr) {
+    let sorted = arr.sort((a , b) => a - b)
+    return sorted[1] + sorted[sorted.length - 2];
 }
 
-console.log(squareSum([ 2, 1, 2, ])); // Should return 9 because 1^2 + 2^2 + 2^2 = 9
-
+console.log(sumSecondLowAndHigh([ 2, 3, 1, 5, 4 ])); // -> 6 = 2 + 4
