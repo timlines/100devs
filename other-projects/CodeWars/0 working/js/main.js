@@ -1,3 +1,5 @@
-const stringToNumber = (str) => { return Number(str); }
+function repeatStr(n, s){
+    return s.repeat(n);
+}
 
-console.log(stringToNumber('12'));
+console.log(repeatStr(6, 'I'));
