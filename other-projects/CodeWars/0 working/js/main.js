@@ -1,5 +1,8 @@
-function repeatStr(n, s){
-    return s.repeat(n);
+// movies.forEach( movie => console.log(movie));
+
+
+const movies = ['Alien', 'Elf', 'Bambi'];
+for( let i = 0; i < movies.length; i++) {
+     console.log(movies[i]);
 }
 
-console.log(repeatStr(6, 'I'));
