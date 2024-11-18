@@ -1,18 +1,32 @@
-function guessBlue(blueStart, redStart, bluePulled, redPulled){
-    console.log(`Number of Blue Marbles: ${blueStart}`);
-    console.log(`Number of Red Marbles: ${redStart}`);
-    console.log(`Number of Red Pulled ${bluePulled}`);
-    console.log(`Number of Blue Pulled ${redPulled}`);
+// Collinearity
 
-    let probBlue = 0;
+// k*
 
-    probBlue = (blueStart - bluePulled) / ((blueStart - bluePulled) + (redStart - redPulled));
+
+// (x1, y1), (x2, y2)
+
+//
+
+function collinearity(x1, y1, x2, y2){
     
+    let result = true;
     
-    
-    console.log(probBlue);
-    return probBlue;
+    if ( x1 * y2 === y1 * x2  ){
+
+    }
+
+    return result;
 }
 
 
-guessBlue(5, 5, 2, 3); //0.6
+// (1, 1, 1, 1 ) -> ture
+
+// (x1, y1, x2, y2)
+// ( 1, 2, 2, 4 ) -> true
+
+// (1, 2) = (k * 2, k * 4)
+
+//(x1, y1) = (k * x2, k * y2)
+
+//(y1 * x2 === x1 * y2)
+
