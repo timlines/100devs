@@ -1,39 +1,62 @@
-// countSheeps
-
-
-// Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
-
-// For example,
-
-// [true,  true,  true,  false,
-//   true,  true,  true,  true ,
-//   true,  false, true,  false,
-//   true,  false, false, true ,
-//   true,  true,  true,  true ,
-//   false, false, true,  true]
-// The correct answer would be 17.
-
-// Hint: Don't forget to check for bad values like null/undefined
-
-
-// function countSheeps(sheep){
-//     let count = 0;
-    
-//     for ( let i = 0; i < sheep.length; i++){
-//         if ( sheep[i] == true ){
-//             count++;
-//         }
+// function collinearity(x1, y1, x2, y2){
+//     if ( (y1 * x2) == ( x1 * y2 ) ){
+//         return true;
 //     }
-
-//     return count;
 // }
 
-
-myArr = [true,  true, true, false, true, true, true, true, true, false, true, false, true, false, false, true , true,  true,  true,  true , false, false, true,  true];
-
-console.log( countSheeps(myArr) );
+// console.log( collinearity(1, 1, 1, 1));
 
 
-function countSheeps(sheep){
-    return sheep.filter(Boolean).length;
+
+// let bestRappers2020 = ['Dylan', 'Polo G', 'Dylan']
+
+// let bestRappersAllTime = bestRappers2020.map( d => 'dylan');
+
+
+// console.log(bestRappersAllTime);
+
+
+function fixText(string){
+    return string.replace(/[5]/g, 'S').replace(/[0]/g, 'o').replace(/[1]/g, 'I');
 }
+
+console.log(fixText('The 5l1ppery 5l0pe 15 0pen'));
+
+
+
+function isTrue(bool){
+    return bool ? 'True' : 'False';
+}
+
+console.log(isTrue(true));
+
+
+function disemvowel(str){
+    return str.replace(/[aeiou]/ig, '');
+}
+
+
+function twoSum(){
+
+}
+
+const doubleChar = (str) => str.repeat(2);
+
+console.log(doubleChar('hello'));
+
+
+for ( let i = 0; i < 100; ) console.log( (++i % 3 ? '': "Fizz") + (i % 5 ? '': "Buzz")|| i);
+
+
+function countSheeps(sheep){ return sheep.filter(Boolean).length}
+
+
+function basicOp(operation, value1, value2){
+    //Code
+    if ( operation === '+' ){
+      return value1 + value2;
+    }
+    
+    
+    
+  }
