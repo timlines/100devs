@@ -16,24 +16,19 @@
 // Hint: Don't forget to check for bad values like null/undefined
 
 
-// function countSheeps(sheep){
-//     let count = 0;
+function countSheeps(sheep){
+    let count = 0;
     
-//     for ( let i = 0; i < sheep.length; i++){
-//         if ( sheep[i] == true ){
-//             count++;
-//         }
-//     }
+    for ( let i = 0; i < sheep.length; i++){
+        if ( sheep[i] == true ){
+            count++;
+        }
+    }
 
-//     return count;
-// }
+    return count;
+}
 
 
 myArr = [true,  true, true, false, true, true, true, true, true, false, true, false, true, false, false, true , true,  true,  true,  true , false, false, true,  true];
 
 console.log( countSheeps(myArr) );
-
-
-function countSheeps(sheep){
-    return sheep.filter(Boolean).length;
-}
