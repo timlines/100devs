@@ -67,13 +67,9 @@ class ArticleManager {
     }
   
     calculatePayment() {
-      this.paidPages = Math.floor(this.words.length/ (this.wordsPerLine * this.linesPerPage));      
-      if ( this.paidPages <= Object.keys( this.paymentStructure).length -1 ){
-        return this.paymentStructure[this.paidPages];
-      }else {
-        return this.paymentStructure[ Object.keys( this.paymentStructure).length -1 ];
-      }
-       
+      this.paidPages = Math.floor(this.words.length/ (this.wordsPerLine * this.linesPerPage));   
+      return this.paymentStructure[ Math.min( this.paidPages, Object.keys( this.paymentStructure).length -1 )];
+          
     }
 
     displayPages() {
