@@ -8,15 +8,6 @@ class ArticleManager {
       this.words = 0;
       this.wordsPerLine = options.wordsPerLine || 12;
       this.linesPerPage = options.linesPerPage || 20;
-      // this.paymentStructure = options.paymentStructure || {
-      //   0: 0,
-      //   1: 30,
-      //   2: 30,
-      //   3: 60,
-      //   4: 60,
-      //   5: 100
-      // },
-
       this.paymentStructure = options.paymentStructure || {
         '0-1': 0,  // Fewer than 1 page: $0
         '1-3': 30, // 1-2 pages $30
@@ -26,7 +17,7 @@ class ArticleManager {
             
       this.debug = options.debug || false;
 
-       // Check that the articale text is a string, the words per lines, and lines per page are numbers, and that the payment structure is an object.
+       // Check that the article text is a string, the words per lines, and lines per page are numbers, and that the payment structure is an object.
        if (typeof articleText !== 'string') {
         throw new Error("Article text must be a string.");
         }
@@ -52,7 +43,7 @@ class ArticleManager {
       }
     }
   
-    // Split the pages based on the criteria of word per line, and lines per page
+    // Split the pages based on the criteria of words per line, and lines per page
     splitIntoPages() {
 
       this.words = this.articleText.trim().split(/\s+/);
