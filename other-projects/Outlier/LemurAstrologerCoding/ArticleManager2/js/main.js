@@ -18,24 +18,12 @@ class ArticleManager {
       // },
 
       this.paymentStructure = options.paymentStructure || {
-        '0-0': 0,  // < 1 page pays 0
-        '1-2': 30, // less than 2 pages pays 30
-        '3-4': 60, // less than 4 pages pays 60
-        '5-': 100 // more than 4 pages pays 100
+        '0-1': 0,  // Fewer than 1 page: $0
+        '1-3': 30, // 1-2 pages $30
+        '3-4': 60, // 3-4 pages $60
+        '4-99': 100 // more than 4 pages pays 100
       },
-        /*
-
-
-
-
-        0: pages < 1, 0, 0, 1
-        1: 1-2 pages, pages >= 1 && pages < 2, 1, 2, 30,
-        2: 3-4 pages, pages >= 3 && pages < 4, 60,
-        3: more than 4 pages, pages > 4, 100,
-        */
-
-
-      
+            
       this.debug = options.debug || false;
 
        // Check that the articale text is a string, the words per lines, and lines per page are numbers, and that the payment structure is an object.
@@ -84,15 +72,22 @@ class ArticleManager {
     
     // Calculate the payment based on the number of pages submitted and the payment structure.
     calculatePayment() {
-      this.paidPages = (this.words.length / (this.wordsPerLine * this.linesPerPage)); // 241 words -> 241 / (12 * 20) = 240 = 2 pages
+      this.paidPages = Math.floor((this.words.length / (this.wordsPerLine * this.linesPerPage))); // 241 words -> 241 / (12 * 20) = 240 = 2 pages
       
-      console.log(Object.entries(this.paymentStructure));
+      // console.log(Object.entries(this.paymentStructure));
       
       let payment = 0;
 
       for (const [pageCount, amount] of Object.entries(this.paymentStructure)) {
-          const [min, max] = pageCount.split("-").map(Number);
-          if (this.paidPages < max || max === undefined) {
+
+        
+        const [min, max] = pageCount.split("-").map(Number);
+        
+          // console.log(`pageCount: ${pageCount}, Amount: ${amount}`);  
+          // console.log(`Min: ${min}, Max: ${max}`);
+          // console.log(`Paid Pages: ${this.paidPages}`);
+
+          if (this.paidPages >= min && ( max === undefined || this.paidPages < max )) {
               payment = amount;
               break;
           }
@@ -100,6 +95,8 @@ class ArticleManager {
 
       this.log(`Calculated payment: $${payment} for ${this.paidPages} pages.`);
       return payment;
+
+    }
 
      
     // Display the total number of pages submitted, the amount that will be paid, and the payment due.
@@ -128,14 +125,49 @@ class ArticleManager {
   }
 
   
-  // Example usage
+  // Example usage, Article with less than 1 page
   const articleText = `Replace with actual article text`; // Replace with actual article text
   const articleManager = new ArticleManager(articleText);
   articleManager.processArticle();
 
 
-    // Example usage
-    const articleText3Page = `In Uruk he built walls, a great rampart, and the temple of blessed Eanna for the god of the firmament Anu, and for Ishtar the goddess of love. Look at it still today: the outer wall where the cornice runs, it shines with the brilliance of copper; and the inner wall, it has no equal. Touch the threshold, it is ancient.”
+    // Example usage, Article with 1 to two pages
+    const articleText1to2 = `In Uruk he built walls, a great rampart, and the temple of
+blessed Eanna for the god of the firmament Anu, and for Ishtar
+the goddess of love. Look at it still today: the outer wall
+where the cornice runs, it shines with the brilliance of copper; and
+the inner wall, it has no equal. Touch the threshold, it is
+ancient.” –The Epic of Gilgamesh, ca. 1750 BC * In the middle
+of the fourth millennium before Christ, men and women could feed themselves
+and their families, much of the time, but almost nobody else. They
+did not yet have the wheel. They could fight, but they did
+not have the capacity to make war. They could not read or
+write, for there was no writing. Without writing, there was no history.
+There were stories but no literature. Art was something that people might
+produce on their pottery, but never for a living. There were customs
+but no laws. There were chiefs but no kings, tribes but no
+nations. The city was unknown. And then, around that time, civilization was
+born: urban life, based on nutritional surplus and social organization, characterized by
+complexity and material culture, much of it made possible by writing. This
+happened in a very particular part of the world: the flood-prone, drought-wracked,
+frequently pestilential plain of southern Iraq, where the rivers Tigris and Euphrates
+meet the Persian Gulf. The plain could be fertile, very fertile, but only when people worked together to irrigate it and control the floods
+with channels and earthworks; this necessity, most likely, accounts for much of
+the early surge in social complexity that distinguished the area. Later civilizations
+would arise independently in two great river valleys not so far away,
+the Indus and the Nile, but the original organized, literate, urban culture
+was produced by a far crueler and more challenging environment than either
+of those. The need for a single script to serve a geography
+using two such dissimilar languages almost interchangeably was a great spur to
+the development of early Mesopotamian writing. This first civilization came to be
+known as Sumer. By about the year 3000 BC, a city called
+`; // Replace with actual article text
+    const articleManager1to2 = new ArticleManager(articleText1to2);
+    articleManager1to2.processArticle();
+
+
+    // Example usage, Article with 2 and half pages
+    const articleText2to3 = `In Uruk he built walls, a great rampart, and the temple of blessed Eanna for the god of the firmament Anu, and for Ishtar the goddess of love. Look at it still today: the outer wall where the cornice runs, it shines with the brilliance of copper; and the inner wall, it has no equal. Touch the threshold, it is ancient.”
 –The Epic of Gilgamesh, ca. 1750 BC
 *
 
@@ -146,8 +178,83 @@ And then, around that time, civilization was born: urban life, based on nutritio
 The need for a single script to serve a geography using two such dissimilar languages almost interchangeably was a great spur to the development of early Mesopotamian writing.
 This first civilization came to be known as Sumer. By about the year 3000 BC, a city called Uruk near the mouth of the Euphrates River, just inland of the head of the Persian Gulf, had eighty thousand residents. A thousand years later Iraq, the land along the Euphrates and its sister stream, the Tigris, would be named for this early metropolis of Uruk. Sharing the land of Sumer, about the size of Belgium, with a dozen other city-states, Uruk was not always the foremost among its rivals in the land. But for most of its existence, spanning the two millennia of the Sumerian world, Uruk was the greatest city on earth. The need for a single script to serve a geography using two such dissimilar languages almost interchangeably was a great spur to the development of early Mesopotamian writing.
 This first civilization came to be known as Sumer. By about the year 3000 BC, a city called Uruk near the mouth of the Euphrates River, just inland of the head of the Persian Gulf, had eighty thousand residents. A thousand years later Iraq, the land along the Euphrates and its sister stream, the Tigris, would be named for this early metropolis of Uruk. Sharing the land of Sumer, about the size of Belgium, with a dozen other city-states, Uruk was not always the foremost among its rivals in the land. But for most of its existence, spanning the two millennia of the Sumerian world, Uruk was the greatest city on earth`; // Replace with actual article text
-    const articleManager3Page = new ArticleManager(articleText3Page);
-    articleManager3Page.processArticle();
+    const articleManager2to3 = new ArticleManager(articleText2to3);
+    articleManager2to3.processArticle();
+
+
+      // Example usage
+  const articleText3to4 = `“In Uruk he built walls, a great rampart, and the temple of
+blessed Eanna for the god of the firmament Anu, and for Ishtar
+the goddess of love. Look at it still today: the outer wall
+where the cornice runs, it shines with the brilliance of copper; and
+the inner wall, it has no equal. Touch the threshold, it is
+ancient.” –The Epic of Gilgamesh, ca. 1750 BC * In the middle
+of the fourth millennium before Christ, men and women could feed themselves
+and their families, much of the time, but almost nobody else. They
+did not yet have the wheel. They could fight, but they did
+not have the capacity to make war. They could not read or
+write, for there was no writing. Without writing, there was no history.
+There were stories but no literature. Art was something that people might
+produce on their pottery, but never for a living. There were customs
+but no laws. There were chiefs but no kings, tribes but no
+nations. The city was unknown. And then, around that time, civilization was
+born: urban life, based on nutritional surplus and social organization, characterized by
+complexity and material culture, much of it made possible by writing. This
+happened in a very particular part of the world: the flood-prone, drought-wracked,
+frequently pestilential plain of southern Iraq, where the rivers Tigris and Euphrates
+meet the Persian Gulf. The plain could be fertile, very fertile, but only when people worked together to irrigate it and control the floods
+with channels and earthworks; this necessity, most likely, accounts for much of
+the early surge in social complexity that distinguished the area. Later civilizations
+would arise independently in two great river valleys not so far away,
+the Indus and the Nile, but the original organized, literate, urban culture
+was produced by a far crueler and more challenging environment than either
+of those. The need for a single script to serve a geography
+using two such dissimilar languages almost interchangeably was a great spur to
+the development of early Mesopotamian writing. This first civilization came to be
+known as Sumer. By about the year 3000 BC, a city called
+Uruk near the mouth of the Euphrates River, just inland of the
+head of the Persian Gulf, had eighty thousand residents. A thousand years
+later Iraq, the land along the Euphrates and its sister stream, the
+Tigris, would be named for this early metropolis of Uruk. Sharing the
+land of Sumer, about the size of Belgium, with a dozen other
+city-states, Uruk was not always the foremost among its rivals in the
+land. But for most of its existence, spanning the two millennia of
+the Sumerian world, Uruk was the greatest city on earth. The Sumerians
+invented kingship, priesthood, diplomacy, law, and war. They gave the West its
+founding stories: the opposition of darkness and light at the Beginning; the
+Flood, with its ark and dove and surviving patriarch; the tower of
+Babel; the distant ancestors of Odysseus and Hercules. The Sumerians established the
+outlines of our political, legal, and temporal structures too, with the first
+kings and assemblies, the first written laws, the first legal contracts, and
+the sexagesimal system of counting that regulates the hours and seconds of
+our days. The Sumerians wrote the first epics and constructed the first
+monumental buildings. They invented the wheel, the sailing boat, the dome, and
+the arch. They were the first people to cast, rivet, and solder
+metals. They were the first to develop mathematics, calculating the hypotenuse of
+a right triangle two thousand years before Pythagoras and enabling extraordinary achievements
+in civil engineering. Compiling methodical lists of plants and animals, the Sumerians
+were the first people to apply rational order to our knowledge of
+the natural world. The Sumerians wrote down almost everything they knew, much
+of it on disposable clay tablets that have survived the millennia. Some
+thirty-nine centuries after the last of the Sumerians died, another inventive and
+curious people, the Victorians of the nineteenth century AD, initiated a remarkable
+period of foreign exploration in Iraq. Thanks to this colorful and dramatic
+intellectual adventure, which began in the 1840s, today we can follow the
+course of Sumerian lawsuits, track Sumerian inventories, and study the terms of
+Sumerian marriages, wills, and loans. We read the overtures of Sumer’s diplomats.
+We follow in detail the provisioning of Sumer’s armies and the triumphs
+or disasters of their expeditions. We know intimately the pleadings of Sumerian
+students for more money from their fathers, and the pleadings of their
+fathers for more diligence from their sons. We track the transactions of
+Sumerian merchants in copper or onions. We admire the complex and perfect
+calculations of Sumerian engineers. Human life on the alluvial plain of the
+two rivers at the birth of civilization five thousand years ago was
+precarious. Again and again, through the ancient stories and archaeological records that
+illuminate the dawn of history, plagues and pestilence swept the hot, low
+country. Terrifying floods killed and destroyed everything within reach of the raging
+waters that came every spring when the snow melted in the mountains`; // Replace with actual article text
+  const articleManager3to4 = new ArticleManager(articleText3to4);
+  articleManager3to4.processArticle();
 
 
   // Example usage, 9 and half Pages
