@@ -18,11 +18,24 @@ class ArticleManager {
       // },
 
       this.paymentStructure = options.paymentStructure || {
-        "0-0": 0,
-        "1-2": 30,
-        "3-4": 60,
-        "5-100": 100
-      };
+        0: 0,  // < 1 page pays 0
+        1: 30, // less than 2 pages pays 30
+        2: 60, // less than 4 pages pays 60
+        3: 100 // more than 4 pages pays 100
+      },
+        /*
+
+
+
+
+        0: pages < 1, 0, 0, 1
+        1: 1-2 pages, pages >= 1 && pages < 2, 1, 2, 30,
+        2: 3-4 pages, pages >= 3 && pages < 4, 60,
+        3: more than 4 pages, pages > 4, 100,
+        */
+
+
+      
       this.debug = options.debug || false;
 
        // Check that the articale text is a string, the words per lines, and lines per page are numbers, and that the payment structure is an object.
@@ -55,6 +68,8 @@ class ArticleManager {
     splitIntoPages() {
 
       this.words = this.articleText.trim().split(/\s+/);
+
+      // console.log(this.words.length);
     
       const lines = [];
       for (let i = 0; i < this.words.length; i += this.wordsPerLine) {
@@ -69,20 +84,66 @@ class ArticleManager {
     
     // Calculate the payment based on the number of pages submitted and the payment structure.
     calculatePayment() {
-      this.paidPages = this.pages.length;
-      let payment = 0;
+      this.paidPages = (this.words.length / (this.wordsPerLine * this.linesPerPage)); // 241 words -> 241 / (12 * 20) = 240 = 2 pages
 
+
+      console.log(Object.entries(this.paymentStructure));
+      
       for (const [pageCount, amount] of Object.entries(this.paymentStructure)) {
-          const [min, max] = pageCount.split("-").map(Number);
-          if (this.paidPages >= min && (max === undefined || this.paidPages <= max)) {
-              payment = amount;
-              break;
-          }
+        const [min, max] = 
       }
 
-      // console.log(`Calculated payment: $${payment} for ${this.paidPages} pages.`);
-      return payment;
-  }
+
+
+
+      // less than 1 page
+      if ( this.paidPages < this.paymentStructure[0][1]) { // < 1
+        return this.paymentStructure[0][2];
+      } 
+      
+      // between 1 and 2 pages
+      else if ( this.paidPages < this.paymentStructure[1][1]) { // < 2
+        return this.paymentStructure[1][2];
+      } 
+      
+      // between 3 and 4 pages
+      else if ( this.paidPages < this.paymentStructure[2][1]) { // < 4
+        return this.paymentStructure[2][2];
+      } 
+      
+      // more than 4 pages
+      else if ( this.paidPages > this.paymentStructure[3][0]) { // > 4
+        return this.paymentStructure[3][2];
+      }
+
+      // console.log(this.paymentStructure[3][1]);
+      // console.log(this.paymentStructure[3][2]);
+
+
+
+    }
+
+
+
+    //   this.paidPages = Math.floor(this.words.length / (this.wordsPerLine * this.linesPerPage));
+    
+    //   if (this.paidPages < 1) {
+    //     return 0;
+    //   } else if (this.paidPages >= 2 && this.paidPages <= 4) {
+    //     return this.paymentStructure[this.paidPages];
+    //   } else {
+    //     return 100;
+    //   }
+    // }
+
+
+    // if ( this.paidPages <= Object.keys( this.paymentStructure).length -1 ){
+    //   return this.paymentStructure[this.paidPages];
+    // }else {
+    //   return this.paymentStructure[ Object.keys( this.paymentStructure).length -1 ];
+    // }
+ 
+  
 
 
 
