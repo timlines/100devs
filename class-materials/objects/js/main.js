@@ -145,8 +145,95 @@
 
 
 // const sw = new Stopwatch(){
+// }
+
+// function Stopwatch() {
+//   this.duration = 1; 
+//   this.reset = 2;
+//   let defaultStart = false;
+//   this.start = function (){
+    
+//     if ( !defaultStart ){
+//       this.defaultStart = true;
+//       console.log('Starting...');
+//     }else {
+//       console.log('The timer is already running.')
+//     }
+//   };
+
+
+// Object.defineProperty(this, 'defaultStart', {
+//   get: function() {
+//     return defaultStart;
+//   },
+//   set: function(value) {
+//     if ( value ){
+//       throw new Error('Timer is already running.')
+//     }
+    
+    
+//     defaultStart = value;
+//   }
+// })
+
+
+
+//   this.stop = 4;
 
 // }
 
+// const sw = new Stopwatch()
 
+
+// console.log(sw.start());
+
+
+
+function Stopwatch() {
+  let startTime, endTime, running, duration = 0;
+
+  this.start = function(){
+    if (running)
+      throw new Error('Stopwatch has already started.');
+
+    console.log('Running...')
+    running = true;
+
+    startTime = new Date();
+    console.log(startTime);
+  };
+
+  this.stop = function(){
+    if (!running)
+      throw new Error('Stopwatch is not started.');
+
+    console.log('Stopping...')
+    running = false;
+
+    endTime = new Date();
+    console.log(endTime);
+
+    const seconds = (endTime.getTime() -startTime.getTime()) / 1000;
+    duration += seconds;
+
+  
+    console.log(`${duration} seconds`);
+
+  };
+
+  this.reset = function(){
+    startTime = null;
+    endTime = null;
+    running = false;
+    duration = 0;
+
+  }
+
+  Object.defineProperty(this, 'duration', {
+    get: function() { return duration; }
+  });
+
+}
+
+const sw = new Stopwatch();
 
