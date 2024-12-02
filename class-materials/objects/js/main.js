@@ -58,34 +58,95 @@
 
 // ----------------------------------------------------------
 
-function Circle(radius) {
+// function Circle(radius) {
   
-  this.radius = radius;
+//   this.radius = radius;
 
-  let defaultLocation = { x: 0, y: 0 };
+//   let defaultLocation = { x: 0, y: 0 };
 
-  let computeOptimumLocation = function(factor) {
+//   let computeOptimumLocation = function(factor) {
 
-  }
+//   }
 
-  this.draw = function() {
-    let x, y;
+//   this.draw = function() {
+//     let x, y;
 
 
-    computeOptimumLocation(0.1);
+//     computeOptimumLocation(0.1);
 
-    console.log('draw');
-  }
-}
+//     console.log('draw');
+//   }
+// }
 
-const circle = new Circle(10);
+// const circle = new Circle(10);
 
-circle.draw()
+// circle.draw()
 
 
 //--------------------------------------------------------------
 
 
+// function Circle(radius) {
+  
+//   this.radius = radius;
+
+//   let defaultLocation = { x: 0, y: 0 };
+
+
+//   this.getDefaultLocation = function(){
+//     return defaultLocation;
+//   }
+
+//   let computeOptimumLocation = function(factor) {
+
+//   }
+
+//   this.draw = function() {
+//     computeOptimumLocation(0.1);
+
+//     console.log('draw');
+//   }
+
+//   Object.defineProperty(this, 'defaultLocation', {
+//     get: function() {
+//       return defaultLocation;
+
+//     },
+//     set: function(value){
+//       if ( !value.x || !value.y ){
+//         throw new Error ('Invalid location.');
+//       }
+
+//       defaultLocation = value;
+//     }
+//   });
+
+// }
+
+// const circle = new Circle(10);
+// circle.defaultLocation = 1;
+// circle.draw()
+
+// ---------------------------------------------------------
+
+//===========
+// Exercise
+//===========
+
+// Create a stopwatch object. 
+// This object has a few options, 
+// duration, a property
+// reset
+// start
+// stop
+
+// if stopwatch has started it should warn the user it can't start again. Neither can it call stop twice.
+
+
+
+// const sw = new Stopwatch(){
+
+// }
 
 
 
