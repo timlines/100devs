@@ -1,21 +1,19 @@
 class  Animal {
     constructor(name){
-        this.name = name;
+        this._name = name;
     }
+    get name(){
+        return this._name
+    }
+
     speak(){
         console.log(`${this.name} makes a sound`)
     }
 }
 
-class Dog extends Animal {
-    constructor( name, breed){
-        super(name)
-        this.breed = breed
-    }
-}
 
 
-let simba = new Dog('Simba', 'Sheperd');
+let simba = new Animal('Simba', 'Sheperd');
 
 
 
