@@ -107,6 +107,9 @@ class Contractor{
     sayHello(){
         console.log(`Hello, my name is ${this._name} and I am on the ${this._role} team at #100Devs!`)
     }
+    sayBye(){
+        console.log(`It has been a pleasure working with you`);
+    }
    
 }
 
@@ -140,3 +143,11 @@ class Back extends Contractor{
 
 let machi = new Front('The Machine', 'Front-end', 'React')
 let simba = new Back('Simba', 'Back-end', 'Node')
+
+let agencyList = [machi, simba]
+
+for(person of agencyList ){
+    person.sayHello()
+}
+
+// Talk through the basics of OOP, make a parent and two children.
