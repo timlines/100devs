@@ -12,6 +12,7 @@
     "vite": "^6.1.0"
   },
   "dependencies": {
-    "appwrite": "^14.0.1"
+    "appwrite": "^14.0.1",
+    "latest": "^0.2.0"
   }
 }
