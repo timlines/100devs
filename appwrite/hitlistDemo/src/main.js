@@ -39,6 +39,9 @@ function addJob(e){
 
 
 async function addJobsToDom(){
+
+  document.querySelector('ul').innerHTML = ""
+
   let response = await databases.listDocuments(
     DATABASE_ID,
     COLLECTION_ID,
@@ -50,10 +53,49 @@ async function addJobsToDom(){
 response.documents.forEach((job)=> {
 
   const li = document.createElement('li');
-  li.textContent = `${job['company-name']} ${job['date-added']} ${job['role']} ${job['location']} ${job['position-type']} ${job['source']}`
+  li.textContent = `${job['company-name']} ${job['date-added']} ${job['role']} ${job['location']} ${job['position-type']} ${job['source']} coffee chat? ${job['chat']} `
   document.querySelector('ul').appendChild(li);
+
+  li.id = job.$id
+
+  const deleteBtn = document.createElement('button')
+  deleteBtn.textContent = '🧨'
+  deleteBtn.onclick = () => removeJob(job.$id)
+  
+  const coffeeBtn = document.createElement('button')
+  coffeeBtn.textContent = '☕'
+  coffeeBtn.onclick = () => updateChat(job.$id)
+  
+  li.appendChild(coffeeBtn)
+  li.appendChild(deleteBtn)
+
+  document.querySelector('ul').appendChild(li)
  
 })
+
+async function removeJob(id){
+  const result = await databases.deleteDocument(
+    DATABASE_ID, // databaseId
+    COLLECTION_ID, // collectionId
+    id // documentId
+  );
+
+  document.getElementById(id).remove()
+
+}
+
+async function updateChat(id){
+  const result = databases.updateDocument(
+    DATABASE_ID, // databaseId
+    COLLECTION_ID, // collectionId
+    id, // documentId
+    {'chat': true} // data (optional)
+   // permissions (optional)
+  );
+
+  result.then(function(){ location.reload() })
+
+  }
 
 
 // response.then(function (response) {
