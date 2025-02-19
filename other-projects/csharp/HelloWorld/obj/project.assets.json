@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\timli\\OneDrive\\Documents\\02-growth\\100devs\\other-projects\\csharp\\HelloWorld\\HelloWorld.csproj",
+      "projectUniqueName": "C:\\Users\\timli\\OneDrive\\Documents\\02-growth\\100devs Academy\\100devs\\other-projects\\csharp\\HelloWorld\\HelloWorld.csproj",
       "projectName": "HelloWorld",
-      "projectPath": "C:\\Users\\timli\\OneDrive\\Documents\\02-growth\\100devs\\other-projects\\csharp\\HelloWorld\\HelloWorld.csproj",
+      "projectPath": "C:\\Users\\timli\\OneDrive\\Documents\\02-growth\\100devs Academy\\100devs\\other-projects\\csharp\\HelloWorld\\HelloWorld.csproj",
       "packagesPath": "C:\\Users\\timli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\timli\\OneDrive\\Documents\\02-growth\\100devs\\other-projects\\csharp\\HelloWorld\\obj\\",
+      "outputPath": "C:\\Users\\timli\\OneDrive\\Documents\\02-growth\\100devs Academy\\100devs\\other-projects\\csharp\\HelloWorld\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\timli\\AppData\\Roaming\\NuGet\\NuGet.Config"
